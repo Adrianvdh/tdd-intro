@@ -11,10 +11,10 @@ public class AuthenticationTest {
         // Given that this user exists
         String username = "adrianvdh";
         String password = "hello123";
-        AuthorisationContext authorizationContext = new AuthorisationContext();
+        AuthorisationContext authorisationContext = new AuthorisationContext();
 
         // When authenticating
-        authorizationContext.authenticate(username, password);
+        authorisationContext.authenticate(username, password);
 
         // Then the session must be valid
         Session userSession = Session.getCurrentSession();
