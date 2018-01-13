@@ -11,15 +11,15 @@ public class AuthenticationTest {
         // Given that this user exists
         String username = "adrianvdh";
         String password = "hello123";
-        AuthorisationContext authorisationContext = new AuthorisationContext();
+        UserService userService = new UserService();
 
         // When authenticating
-        authorisationContext.authenticate(username, password);
+        userService.login(username, password);
 
         // Then the session must be valid
-        Session userSession = Session.getCurrentSession();
-        Assert.assertEquals("adrianvdh", userSession.getAuthenticatedUser().username);
-        Assert.assertEquals("hello123", userSession.getAuthenticatedUser().password);
+        Session userSession = userService.session;
+        Assert.assertEquals("adrianvdh", userSession.user.username);
+        Assert.assertEquals("hello123", userSession.user.password);
 
     }
 }
