@@ -15,7 +15,13 @@ public class UserService {
     }
 
     public void login(String username, String password) {
-        User foundUser = users.get(0);
+        User foundUser = null;
+        for (User userInCollection : users) {
+            if (userInCollection.username.equals(username)) {
+                foundUser = userInCollection;
+                break;
+            }
+        }
 
         if(foundUser.username.equals(username) && foundUser.password.equals(password)) {
             session = new Session();
