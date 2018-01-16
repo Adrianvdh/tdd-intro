@@ -23,6 +23,9 @@ public class UserService {
             }
         }
 
+        if(foundUser==null)
+            throw new UserNotFoundException(String.format("User with username %s could not be found!", username));
+
         if(foundUser.username.equals(username) && foundUser.password.equals(password)) {
             session = new Session();
             session.user = new User();
