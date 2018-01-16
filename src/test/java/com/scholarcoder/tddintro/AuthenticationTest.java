@@ -22,4 +22,16 @@ public class AuthenticationTest {
         Assert.assertEquals("hello123", userSession.user.password);
 
     }
+
+    @Test(expected = UserNotFoundException.class)
+    public void userLoginWithIncorrectCredentials() throws Exception {
+
+        // Given that this user don't exist
+        String username = "john1";
+        String password = "flowers2006";
+        UserService userService = new UserService();
+
+        // When authenticating
+        userService.login(username, password);
+    }
 }
