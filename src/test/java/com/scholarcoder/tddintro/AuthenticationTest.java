@@ -24,13 +24,14 @@ public class AuthenticationTest {
 
     }
 
-    @Test(expected = UserNotFoundException.class)
+    @Test(expected = AuthenticationFailureException.class)
     public void userLoginWhereUserIsNotFound() throws Exception {
 
         // Given that this user don't exist
-        String username = "john1";
+        String username = "adrianvdh";
         String password = "flowers2006";
-        UserService userService = new UserService(null);
+        UserRepository userRepository = new InMemoryUserRepository();
+        UserService userService = new UserService(userRepository);
 
         // When authenticating
         userService.login(username, password);
