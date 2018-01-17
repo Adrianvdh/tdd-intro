@@ -14,4 +14,13 @@ public class UserRepositoryTest {
 
         Assert.assertEquals("adrianvdh", user.username);
     }
+
+    @Test(expected = UserNotFoundException.class)
+    public void testFindByUsername_UsernameNotFound() {
+        String username = "kentb";
+        UserRepository userRepository = new InMemoryUserRepository();
+
+        //when
+        User user = userRepository.findByUsername(username);
+    }
 }
