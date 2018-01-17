@@ -14,6 +14,9 @@ public class UserService {
         users.add(user);
     }
 
+    public UserService(UserRepository userRepository) {
+    }
+
     public void login(String username, String password) {
         User foundUser = null;
         for (User userInCollection : users) {

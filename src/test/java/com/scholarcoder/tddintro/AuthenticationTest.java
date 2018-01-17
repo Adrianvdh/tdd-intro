@@ -11,7 +11,8 @@ public class AuthenticationTest {
         // Given that this user exists
         String username = "adrianvdh";
         String password = "hello123";
-        UserService userService = new UserService();
+        UserRepository userRepository = new InMemoryUserRepository();
+        UserService userService = new UserService(userRepository);
 
         // When authenticating
         userService.login(username, password);
@@ -29,7 +30,7 @@ public class AuthenticationTest {
         // Given that this user don't exist
         String username = "john1";
         String password = "flowers2006";
-        UserService userService = new UserService();
+        UserService userService = new UserService(null);
 
         // When authenticating
         userService.login(username, password);
