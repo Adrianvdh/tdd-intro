@@ -21,5 +21,6 @@ public class UserService {
             session.user.username = foundUser.username;
             session.user.password = foundUser.password;
         }
+        else throw new AuthenticationFailureException("Provided password was incorrect!");
     }
 }
