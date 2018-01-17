@@ -24,7 +24,7 @@ public class AuthenticationTest {
     }
 
     @Test(expected = UserNotFoundException.class)
-    public void userLoginWithIncorrectCredentials() throws Exception {
+    public void userLoginWhereUserIsNotFound() throws Exception {
 
         // Given that this user don't exist
         String username = "john1";
