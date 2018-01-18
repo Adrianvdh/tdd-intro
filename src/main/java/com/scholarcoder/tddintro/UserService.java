@@ -21,4 +21,8 @@ public class UserService {
         }
         else throw new AuthenticationFailureException("Provided password was incorrect!");
     }
+
+    public void preAuthorize() {
+
+    }
 }
