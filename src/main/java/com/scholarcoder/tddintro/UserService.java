@@ -17,7 +17,7 @@ public class UserService {
 
         if(foundUser.username.equals(username) && foundUser.password.equals(password)) {
             Session session = Session.getCurrentSession();
-            session.user = foundUser;
+            session.setAuthenticatedUser(foundUser);
         }
         else throw new AuthenticationFailureException("Provided password was incorrect!");
     }
