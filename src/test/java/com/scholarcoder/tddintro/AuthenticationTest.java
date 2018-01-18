@@ -17,11 +17,10 @@ public class AuthenticationTest {
         // When authenticating
         userService.login(username, password);
 
-        // Then the session must be valid
-        Session userSession = userService.session;
+        // The the user session must be valid
+        Session userSession = Session.getCurrentSession();
         Assert.assertEquals("adrianvdh", userSession.user.username);
         Assert.assertEquals("hello123", userSession.user.password);
-
     }
 
     @Test(expected = AuthenticationFailureException.class)
@@ -36,4 +35,5 @@ public class AuthenticationTest {
         // When authenticating
         userService.login(username, password);
     }
+
 }
