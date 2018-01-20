@@ -8,10 +8,12 @@ public class PreAuthorizationTest {
     @Test
     public void publishPostThatRequiresAuthentication() throws Exception {
 
+        UserService userService = new UserService(new InMemoryUserRepository());
         PostRepository postRepository = new InMemoryPostRepository();
-        PostService postService = new PostService(postRepository);
+        PostService postService = new PostService(postRepository, userService);
         Post newPost = new Post("My first post", "Hello world");
 
+        userService.login("adrianvdh", "hello123");
         postService.publish(newPost);
 
         Post publishedPost = postService.getMostRecentPublishedPost();
