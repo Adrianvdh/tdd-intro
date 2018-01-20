@@ -23,6 +23,8 @@ public class UserService {
     }
 
     public void preAuthorize() {
-
+        Session currentSession = Session.getCurrentSession();
+        if(currentSession.getAuthenticatedUser()==null)
+            throw new AuthorizationRequiredException("User is not authenticated!");
     }
 }

@@ -17,4 +17,12 @@ public class PreAuthorizationTest {
         Post publishedPost = postService.getMostRecentPublishedPost();
         Assert.assertTrue(publishedPost.published);
     }
+
+    @Test(expected = AuthorizationRequiredException.class)
+    public void testPreAuthorizeMethod() throws Exception {
+
+        UserService userService = new UserService(new InMemoryUserRepository());
+
+        userService.preAuthorize();
+    }
 }
