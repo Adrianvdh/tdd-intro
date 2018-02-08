@@ -1,12 +1,19 @@
 package com.scholarcoder.tddintro;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PreAuthorizationTest {
 
+    @Before
+    public void setUp() throws Exception {
+        Session session = Session.getCurrentSession();
+        session.setAuthenticatedUser(null);
+    }
+
     @Test
-    public void publishPostThatRequiresAuthentication() throws Exception {
+    public void publishPostThatRequiresAuthorization() throws Exception {
 
         UserService userService = new UserService(new InMemoryUserRepository());
         PostRepository postRepository = new InMemoryPostRepository();

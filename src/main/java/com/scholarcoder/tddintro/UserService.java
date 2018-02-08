@@ -1,8 +1,6 @@
 package com.scholarcoder.tddintro;
 
 public class UserService {
-    public Session session;
-
     UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {

@@ -6,7 +6,7 @@ import org.junit.Test;
 public class UserRepositoryTest {
 
     @Test
-    public void testFindByUsername() {
+    public void testFindByUsername_UserIsFound() {
         String username = "adrianvdh";
         UserRepository userRepository = new InMemoryUserRepository();
 
@@ -15,12 +15,13 @@ public class UserRepositoryTest {
         Assert.assertEquals("adrianvdh", user.username);
     }
 
-    @Test(expected = UserNotFoundException.class)
+    @Test
     public void testFindByUsername_UsernameNotFound() {
-        String username = "kentb";
+        String username = "john69";
         UserRepository userRepository = new InMemoryUserRepository();
 
-        //when
         User user = userRepository.findByUsername(username);
+
+        Assert.assertNull(user);
     }
 }

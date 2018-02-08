@@ -23,9 +23,6 @@ public class InMemoryUserRepository implements UserRepository {
             }
         }
 
-        if(foundUser == null)
-            throw new UserNotFoundException(String.format("User with username %s could not be found!", username));
-
         return foundUser;
     }
 }
