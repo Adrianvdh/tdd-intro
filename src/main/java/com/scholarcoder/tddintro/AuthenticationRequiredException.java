@@ -1,4 +1,7 @@
 package com.scholarcoder.tddintro;
 
-public class AuthenticationRequiredException {
+public class AuthenticationRequiredException extends RuntimeException {
+    public AuthenticationRequiredException(String message) {
+        super(message);
+    }
 }

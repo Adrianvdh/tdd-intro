@@ -1,9 +1,12 @@
 package com.scholarcoder.tddintro;
 
 public class Post {
-    public boolean published = false;
 
-    public Post(String title, String body) {
+    public ReleaseStatus releaseStatus = ReleaseStatus.DRAFT;
+    public String authorUserName;
 
+
+    public Post(String title, String body, String authorUserName) {
+        this.authorUserName = authorUserName;
     }
 }
