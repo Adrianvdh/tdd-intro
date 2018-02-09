@@ -12,26 +12,40 @@ public class PreAuthorizationTest {
         session.setAuthenticatedUser(null);
     }
 
+    @Test(expected = AuthenticationRequiredException.class)
+    public void testAuthenticationRequired() throws Exception {
+
+        UserAuthorization userAuthorization = new UserAuthorization();
+
+        userAuthorization.requiresAuthentication();
+    }
+
+    @Test(expected = AuthorizationFailedException.class)
+    public void testUserIsOwnerAuthorization() throws Exception {
+
+        AuthenticationService authenticationService = new AuthenticationService(new InMemoryUserRepository());
+        authenticationService.login("adrianvdh", "hello123");
+        UserAuthorization userAuthorization = new UserAuthorization();
+        String ownerName = "john69";
+
+        userAuthorization.requiresOwner(ownerName);
+    }
+
     @Test
     public void publishPostThatRequiresAuthorization() throws Exception {
 
-        UserService userService = new UserService(new InMemoryUserRepository());
-        PostRepository postRepository = new InMemoryPostRepository();
-        PostService postService = new PostService(postRepository, userService);
-        Post newPost = new Post("My first post", "Hello world");
+        AuthenticationService authenticationService = new AuthenticationService(new InMemoryUserRepository());
+        authenticationService.login("adrianvdh", "hello123");
 
-        userService.login("adrianvdh", "hello123");
-        postService.publish(newPost);
+        PostRepository postRepository = new InMemoryPostRepository();
+        PostService postService = new PostService(postRepository);
+        UserAuthorization userAuthorization = new UserAuthorization();
+        SecuredPostServiceProxy securedPostServiceProxy = new SecuredPostServiceProxy(postService, userAuthorization);
+        Post draftPost = new Post("My first post", "Hello world", "adrianvdh");
+
+        securedPostServiceProxy.publish(draftPost);
 
         Post publishedPost = postService.getMostRecentPublishedPost();
-        Assert.assertTrue(publishedPost.published);
-    }
-
-    @Test(expected = AuthorizationRequiredException.class)
-    public void testPreAuthorizeMethod() throws Exception {
-
-        UserService userService = new UserService(new InMemoryUserRepository());
-
-        userService.preAuthorize();
+        Assert.assertTrue(publishedPost.releaseStatus == ReleaseStatus.PUBLISHED);
     }
 }
