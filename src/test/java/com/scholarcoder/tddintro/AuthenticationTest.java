@@ -1,7 +1,6 @@
 package com.scholarcoder.tddintro;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class AuthenticationTest {
@@ -13,10 +12,10 @@ public class AuthenticationTest {
         String username = "adrianvdh";
         String password = "hello123";
         UserRepository userRepository = new InMemoryUserRepository();
-        UserService userService = new UserService(userRepository);
+        AuthenticationService authenticationService = new AuthenticationService(userRepository);
 
         // When authenticating
-        userService.login(username, password);
+        authenticationService.login(username, password);
 
         // The the currentUser session must be valid
         Session userSession = Session.getCurrentSession();
@@ -31,10 +30,10 @@ public class AuthenticationTest {
         String username = "john69";
         String password = "hello123";
         UserRepository userRepository = new InMemoryUserRepository();
-        UserService userService = new UserService(userRepository);
+        AuthenticationService authenticationService = new AuthenticationService(userRepository);
 
         //When authenticating
-        userService.login(username, password);
+        authenticationService.login(username, password);
     }
 
     @Test(expected = AuthenticationFailureException.class)
@@ -44,10 +43,10 @@ public class AuthenticationTest {
         String username = "adrianvdh";
         String password = "flowers2006";
         UserRepository userRepository = new InMemoryUserRepository();
-        UserService userService = new UserService(userRepository);
+        AuthenticationService authenticationService = new AuthenticationService(userRepository);
 
         // When authenticating
-        userService.login(username, password);
+        authenticationService.login(username, password);
     }
 
 }
