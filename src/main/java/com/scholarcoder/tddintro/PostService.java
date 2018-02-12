@@ -1,18 +1,10 @@
 package com.scholarcoder.tddintro;
 
 public class PostService {
+    public Post post;
 
-    private Post post;
-
-    public PostService(PostRepository postRepository) {
-    }
-
-    public void publish(Post postToPublish) {
-        this.post = postToPublish;
-        this.post.published = true;
-    }
-
-    public Post getMostRecentPublishedPost() {
-        return this.post;
+    public void publish(Post post) {
+        post.published = true;
+        this.post = post;
     }
 }

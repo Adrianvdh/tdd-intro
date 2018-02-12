@@ -6,15 +6,11 @@ import org.junit.Test;
 public class PreAuthorizationTest {
 
     @Test
-    public void publishPostThatRequiresAuthentication() throws Exception {
-
-        PostRepository postRepository = new InMemoryPostRepository();
-        PostService postService = new PostService(postRepository);
-        Post newPost = new Post("My first post", "Hello world");
-
+    public void publishPost() throws Exception {
+        Post newPost = new Post("Hello world!", "This is my first post!", "adrianvdh");
+        PostService postService = new PostService();
         postService.publish(newPost);
-
-        Post publishedPost = postService.getMostRecentPublishedPost();
-        Assert.assertTrue(publishedPost.published);
+        Post post = postService.post;
+        Assert.assertTrue(post.published);
     }
 }
