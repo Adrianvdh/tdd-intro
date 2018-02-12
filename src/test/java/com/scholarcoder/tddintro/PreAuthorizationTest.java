@@ -33,19 +33,17 @@ public class PreAuthorizationTest {
 
     @Test
     public void publishPostThatRequiresAuthorization() throws Exception {
-
         AuthenticationService authenticationService = new AuthenticationService(new InMemoryUserRepository());
         authenticationService.login("adrianvdh", "hello123");
 
         PostRepository postRepository = new InMemoryPostRepository();
-        PostService postService = new PostService(postRepository);
         UserAuthorization userAuthorization = new UserAuthorization();
-        SecuredPostServiceProxy securedPostServiceProxy = new SecuredPostServiceProxy(postService, userAuthorization);
+        PostService postService = new PostService(postRepository, userAuthorization);
         Post draftPost = new Post("My first post", "Hello world", "adrianvdh");
 
-        securedPostServiceProxy.publish(draftPost);
+        postService.publish(draftPost);
 
-        Post publishedPost = postService.getMostRecentPublishedPost();
+        Post publishedPost = postRepository.findMostLastPublishedPost();
         Assert.assertTrue(publishedPost.releaseStatus == ReleaseStatus.PUBLISHED);
     }
 }

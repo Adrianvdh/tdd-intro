@@ -17,7 +17,7 @@ public class AuthenticationTest {
         // When authenticating
         authenticationService.login(username, password);
 
-        // The the currentUser session must be valid
+        // The the current user session must be valid
         Session userSession = Session.getCurrentSession();
         Assert.assertEquals("adrianvdh", userSession.getAuthenticatedUser().username);
         Assert.assertEquals("hello123", userSession.getAuthenticatedUser().password);

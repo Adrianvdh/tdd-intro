@@ -1,7 +1,7 @@
 package com.scholarcoder.tddintro;
 
 public class AuthenticationService {
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     public AuthenticationService(UserRepository userRepository) {
         this.userRepository = userRepository;

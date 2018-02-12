@@ -2,17 +2,18 @@ package com.scholarcoder.tddintro;
 
 public class PostService {
 
-    private Post post;
+    private PostRepository postRepository;
+    private UserAuthorization userAuthorization;
 
-    public PostService(PostRepository postRepository) {
-
+    public PostService(PostRepository postRepository, UserAuthorization userAuthorization) {
+        this.postRepository = postRepository;
+        this.userAuthorization = userAuthorization;
     }
 
-    public Post getMostRecentPublishedPost() {
-        return this.post;
-    }
+    public void publish(Post post) {
+        userAuthorization.requiresOwner(post.authorUserName);
 
-    public void save(Post post) {
-        this.post = post;
+        post.releaseStatus = ReleaseStatus.PUBLISHED;
+        postRepository.save(post);
     }
 }
