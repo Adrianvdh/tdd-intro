@@ -4,7 +4,11 @@ public class PostService {
     public Post post;
 
     public void publish(Post post) {
-        post.published = true;
+        post.releaseStatus = ReleaseStatus.PUBLISHED;
         this.post = post;
+    }
+
+    public Post findLatestPublishedPost() {
+        return post;
     }
 }

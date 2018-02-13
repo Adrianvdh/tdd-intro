@@ -7,10 +7,12 @@ public class PreAuthorizationTest {
 
     @Test
     public void publishPost() throws Exception {
-        Post newPost = new Post("Hello world!", "This is my first post!", "adrianvdh");
         PostService postService = new PostService();
+        Post newPost = new Post("Hello world!", "This is my first post!", "adrianvdh");
+
         postService.publish(newPost);
-        Post post = postService.post;
-        Assert.assertTrue(post.published);
+
+        Post post = postService.findLatestPublishedPost();
+        Assert.assertTrue(post.getReleaseStatus() == ReleaseStatus.PUBLISHED);
     }
 }
