@@ -23,4 +23,16 @@ public class PreAuthorizationTest {
 
         userAuthorization.requiresAuthentication();
     }
+
+    @Test(expected = AuthorizationFailedException.class)
+    public void userIsOwnerAuthorization() throws Exception {
+        UserRepository userRepository = new InMemoryUserRepository();
+        UserService userService = new UserService(userRepository);
+        userService.login("adrianvdh", "hello123");
+
+        UserAuthorization userAuthorization = new UserAuthorization();
+        String ownerUsername = "john69";
+
+        userAuthorization.userIsOwner(ownerUsername);
+    }
 }
