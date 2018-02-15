@@ -37,27 +37,13 @@ public class PreAuthorizationTest {
     }
 
     @Test(expected = AuthorizationFailedException.class)
-    public void userIsOwnerAuthorizationUsingOwnerAware() throws Exception {
+    public void userIsOwnerAuthorization_usingOwnerAwareEntity() throws Exception {
         UserRepository userRepository = new InMemoryUserRepository();
         UserService userService = new UserService(userRepository);
         userService.login("adrianvdh", "hello123");
 
         UserAuthorization userAuthorization = new UserAuthorization();
-        String ownerUsername = "john69";
-        OwnerAwareEntity ownerAwareEntityPost = new OwnerAwareEntity() {
-            private String ownerUsername;
-
-            @Override
-            public void setOwnerUsername(String username) {
-                this.ownerUsername = username;
-            }
-
-            @Override
-            public String getOwnerUsername() {
-                return ownerUsername;
-            }
-        };
-        ownerAwareEntityPost.setOwnerUsername(ownerUsername);
+        OwnerAwareEntity ownerAwareEntityPost = new Post("John's post", "Hey, howzit!", "john69");
 
         userAuthorization.userIsOwner(ownerAwareEntityPost);
     }
