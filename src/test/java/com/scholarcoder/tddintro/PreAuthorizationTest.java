@@ -24,7 +24,7 @@ public class PreAuthorizationTest {
         userAuthorization.requiresAuthentication();
     }
 
-    @Test(expected = AuthorizationFailedException.class)
+    @Test(expected = AuthorizationDeniedAccessException.class)
     public void userIsOwnerAuthorization() throws Exception {
         UserRepository userRepository = new InMemoryUserRepository();
         UserService userService = new UserService(userRepository);
@@ -36,7 +36,7 @@ public class PreAuthorizationTest {
         userAuthorization.userIsOwner(ownerUsername);
     }
 
-    @Test(expected = AuthorizationFailedException.class)
+    @Test(expected = AuthorizationDeniedAccessException.class)
     public void userIsOwnerAuthorization_usingOwnerAwareEntity() throws Exception {
         UserRepository userRepository = new InMemoryUserRepository();
         UserService userService = new UserService(userRepository);
@@ -48,5 +48,16 @@ public class PreAuthorizationTest {
         userAuthorization.userIsOwner(ownerAwareEntityPost);
     }
 
+    @Test(expected = AuthorizationDeniedAccessException.class)
+    public void publishPostThatRequiresAuthorization() throws Exception {
+        UserRepository userRepository = new InMemoryUserRepository();
+        UserService userService = new UserService(userRepository);
+        userService.login("adrianvdh", "hello123");
 
+        PostRepository postRepository = new InMemoryPostRepository();
+        PostService postService = new PostService(postRepository);
+        Post newPost = new Post("John's post", "Hey, howzit!", "john69");
+
+        postService.publish(newPost);
+    }
 }
