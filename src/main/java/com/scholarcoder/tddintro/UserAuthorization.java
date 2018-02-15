@@ -17,4 +17,12 @@ public class UserAuthorization {
             throw new AuthorizationFailedException("The current user is not the owner!");
         }
     }
+
+    public void userIsOwner(OwnerAwareEntity ownerAwareEntityEntity) {
+        requiresAuthentication();
+
+        if(!ownerAwareEntityEntity.getOwnerUsername().equals(currentUser.username)) {
+            throw new AuthorizationFailedException("The current user is not the owner!");
+        }
+    }
 }
