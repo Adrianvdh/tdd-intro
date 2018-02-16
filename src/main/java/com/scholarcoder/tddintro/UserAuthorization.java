@@ -2,24 +2,27 @@ package com.scholarcoder.tddintro;
 
 public class UserAuthorization {
 
-    private User user;
-
-    public UserAuthorization() {
-        Session session = Session.getCurrentSession();
-        this.user = session.getAuthenticatedUser();
-    }
+    private User currentUser = Session.getCurrentSession().getAuthenticatedUser();
 
     public void requiresAuthentication() {
-        if(user == null) {
-            throw new AuthenticationRequiredException("No one is logged in to perform this operation!");
+        if(currentUser==null) {
+            throw new AuthenticationRequiredException("This method requires a user to be logged in first!");
         }
     }
 
-    public void requiresOwner(String ownerName) {
+    public void userIsOwner(String ownerUsername) {
         requiresAuthentication();
 
-        if(!ownerName.equals(user.username)) {
-            throw new AuthorizationFailedException("Logged in user is not the owner!");
+        if(!ownerUsername.equals(currentUser.username)) {
+            throw new AuthorizationDeniedAccessException("The current user is not the owner!");
+        }
+    }
+
+    public void userIsOwner(OwnerAwareEntity ownerAwareEntityEntity) {
+        requiresAuthentication();
+
+        if(!ownerAwareEntityEntity.getOwnerUsername().equals(currentUser.username)) {
+            throw new AuthorizationDeniedAccessException("The current user is not the owner!");
         }
     }
 }
