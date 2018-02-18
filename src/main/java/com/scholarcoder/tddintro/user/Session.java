@@ -4,7 +4,7 @@ import com.scholarcoder.tddintro.user.model.User;
 
 public class Session {
     private static Session instance = null;
-    public User currentUser;
+    private User currentUser;
 
     private Session() { }
 
