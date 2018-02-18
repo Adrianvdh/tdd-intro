@@ -1,5 +1,8 @@
 package com.scholarcoder.tddintro;
 
+import com.scholarcoder.tddintro.user.model.User;
+import com.scholarcoder.tddintro.user.repository.InMemoryUserRepository;
+import com.scholarcoder.tddintro.user.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 

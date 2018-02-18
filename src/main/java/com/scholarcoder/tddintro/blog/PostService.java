@@ -1,4 +1,9 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.blog;
+
+import com.scholarcoder.tddintro.blog.model.Post;
+import com.scholarcoder.tddintro.blog.model.ReleaseStatus;
+import com.scholarcoder.tddintro.authorization.UserAuthorization;
+import com.scholarcoder.tddintro.blog.repository.PostRepository;
 
 public class PostService {
     public PostRepository postRepository;

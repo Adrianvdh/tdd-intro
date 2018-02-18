@@ -1,4 +1,6 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.user.repository;
+
+import com.scholarcoder.tddintro.user.model.User;
 
 import java.util.HashSet;
 import java.util.Set;

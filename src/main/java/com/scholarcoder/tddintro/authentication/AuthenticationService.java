@@ -1,4 +1,10 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.authentication;
+
+import com.scholarcoder.tddintro.authentication.exception.AuthenticationFailureException;
+import com.scholarcoder.tddintro.authentication.exception.UserNotFoundException;
+import com.scholarcoder.tddintro.user.Session;
+import com.scholarcoder.tddintro.user.model.User;
+import com.scholarcoder.tddintro.user.repository.UserRepository;
 
 public class AuthenticationService {
     private UserRepository userRepository;

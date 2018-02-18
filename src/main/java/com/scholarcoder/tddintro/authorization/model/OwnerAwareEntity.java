@@ -1,4 +1,4 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.authorization.model;
 
 public interface OwnerAwareEntity {
     String getOwnerUsername();

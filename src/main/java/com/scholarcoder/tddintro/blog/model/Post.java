@@ -1,4 +1,6 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.blog.model;
+
+import com.scholarcoder.tddintro.authorization.model.OwnerAwareEntity;
 
 public class Post implements OwnerAwareEntity {
 
@@ -6,7 +8,7 @@ public class Post implements OwnerAwareEntity {
     private String authorName;
 
     public Post(String title, String body, String authorUsername) {
-        this.authorName = authorUsername;
+        authorName = authorUsername;
     }
 
     public ReleaseStatus getReleaseStatus() {
@@ -20,6 +22,6 @@ public class Post implements OwnerAwareEntity {
 
     @Override
     public void setOwnerUsername(String username) {
-        this.authorName = username;
+        authorName = username;
     }
 }

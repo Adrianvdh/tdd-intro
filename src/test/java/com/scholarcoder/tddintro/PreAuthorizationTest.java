@@ -1,5 +1,18 @@
 package com.scholarcoder.tddintro;
 
+import com.scholarcoder.tddintro.authorization.exception.AuthenticationRequiredException;
+import com.scholarcoder.tddintro.authorization.exception.AuthorizationDeniedAccessException;
+import com.scholarcoder.tddintro.authorization.model.OwnerAwareEntity;
+import com.scholarcoder.tddintro.blog.*;
+import com.scholarcoder.tddintro.blog.model.Post;
+import com.scholarcoder.tddintro.blog.model.ReleaseStatus;
+import com.scholarcoder.tddintro.blog.repository.InMemoryPostRepository;
+import com.scholarcoder.tddintro.blog.repository.PostRepository;
+import com.scholarcoder.tddintro.user.*;
+import com.scholarcoder.tddintro.authentication.*;
+import com.scholarcoder.tddintro.authorization.*;
+import com.scholarcoder.tddintro.user.repository.InMemoryUserRepository;
+import com.scholarcoder.tddintro.user.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,5 +1,9 @@
 package com.scholarcoder.tddintro;
 
+import com.scholarcoder.tddintro.blog.repository.InMemoryPostRepository;
+import com.scholarcoder.tddintro.blog.model.Post;
+import com.scholarcoder.tddintro.blog.repository.PostRepository;
+import com.scholarcoder.tddintro.blog.model.ReleaseStatus;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;

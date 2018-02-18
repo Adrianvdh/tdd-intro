@@ -1,4 +1,6 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.user;
+
+import com.scholarcoder.tddintro.user.model.User;
 
 public class Session {
     private static Session instance = null;

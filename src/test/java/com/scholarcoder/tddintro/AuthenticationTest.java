@@ -1,5 +1,11 @@
 package com.scholarcoder.tddintro;
 
+import com.scholarcoder.tddintro.authentication.*;
+import com.scholarcoder.tddintro.authentication.exception.AuthenticationFailureException;
+import com.scholarcoder.tddintro.authentication.exception.UserNotFoundException;
+import com.scholarcoder.tddintro.user.repository.InMemoryUserRepository;
+import com.scholarcoder.tddintro.user.Session;
+import com.scholarcoder.tddintro.user.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 

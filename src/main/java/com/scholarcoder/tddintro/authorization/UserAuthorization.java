@@ -1,4 +1,10 @@
-package com.scholarcoder.tddintro;
+package com.scholarcoder.tddintro.authorization;
+
+import com.scholarcoder.tddintro.authorization.exception.AuthenticationRequiredException;
+import com.scholarcoder.tddintro.authorization.exception.AuthorizationDeniedAccessException;
+import com.scholarcoder.tddintro.authorization.model.OwnerAwareEntity;
+import com.scholarcoder.tddintro.user.Session;
+import com.scholarcoder.tddintro.user.model.User;
 
 public class UserAuthorization {
 
