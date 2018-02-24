@@ -1,7 +1,7 @@
 # Introduction to Test-Driven-Development
 
 
-[![Build Status](https://travis-ci.org/Adrianvdh/scholarcoder-tdd-intro.svg?branch=master)](https://travis-ci.org/Adrianvdh/scholarcoder-tdd-intro) 
+[![Build Status](https://travis-ci.org/Adrianvdh/tdd-intro.svg?branch=master)](https://travis-ci.org/Adrianvdh/scholarcoder-tdd-intro) 
 
 Source code from my [Introduction to Test-Driven-Development](http://scholarcoder.com/1392/ttd-intro) blog post.
 
